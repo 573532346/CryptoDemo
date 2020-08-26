@@ -49,7 +49,7 @@ class CPWalletListCell: CPBaseListViewCell {
     override func setupSubviews() {
         super.setupSubviews()
         
-    
+        selectionStyle = .none
         contentView.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
         
         // 这里的圆角需要优化，具体用coregraphic,demo不考虑处理
