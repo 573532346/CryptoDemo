@@ -9,6 +9,7 @@
 import UIKit
 import SwiftyJSON
 import SnapKit
+import Kingfisher
 
 class CPWalletListCellModel {
     
@@ -19,7 +20,29 @@ class CPWalletListCellModel {
     init(model: CPCurrencyListModel) {
         self.model = model
     }
+    
+    // 没有需求文档，无法确认数据如果进行二次处理
+    // 处理数据逻辑
+    var iconUrl: String {
+        return model.colorfulImageUrl
+    }
+    
+    var displayName: String {
+        return model.name
+    }
+    
+    var displayAmount: String {
+        // 没有需求文档不知道怎么处理数据
+        return "0.0026" + model.coinId
+    }
+    
+    var displayUSD: String {
+        // 没有需求文档不知道怎么处理数据
+        return "$" + "1000.00"
+    }
 }
+
+let kCPWalletListCell = "CPWalletListCell"
 
 class CPWalletListCell: CPBaseListViewCell {
     
@@ -48,7 +71,7 @@ class CPWalletListCell: CPBaseListViewCell {
         }
         
         usdAmoutLabel.snp.makeConstraints { (make) in
-            make.right.equalToSuperview()
+            make.right.equalToSuperview().offset(-15.0)
             make.top.equalTo(numLabel.snp.bottom).offset(4.0)
         }
         
@@ -58,6 +81,15 @@ class CPWalletListCell: CPBaseListViewCell {
         guard let wrapModel = data as? CPWalletListCellModel else { return }
         
         self.model = wrapModel
+        
+        // 只做ui渲染，数据逻辑在viewModel中处理完
+        symbolLabel.text = wrapModel.displayName
+        numLabel.text = wrapModel.displayAmount
+        usdAmoutLabel.text = wrapModel.displayUSD
+        
+        if let url = URL(string: wrapModel.iconUrl) {
+            icon.kf.setImage(with: url)
+        } else {/* do nothing */}
     }
     
     //MARK: - Property
