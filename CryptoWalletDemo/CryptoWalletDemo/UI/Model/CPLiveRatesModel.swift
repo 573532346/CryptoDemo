@@ -74,6 +74,19 @@ class CPLiveRatesModel {
             CPLiveRatesTiersModel(json: $0)
         }
     }
+    
+    // 获取对应币种下的汇率model(currency可以考虑使用enum来封装)
+    func getRate(with currency: String) -> CPLiveRatesListModel? {
+        
+        let filterModel = tiers.filter {
+            $0.toCurrency == currency
+        }.first
+        
+        // 找不到，则返回nil报错，前端页面做对应的异常逻辑处理
+        guard let wrapModel = filterModel else { return nil }
+        
+        return wrapModel.usageRateModel
+    }
 }
 
 

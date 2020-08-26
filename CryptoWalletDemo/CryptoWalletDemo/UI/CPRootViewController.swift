@@ -9,11 +9,15 @@
 import UIKit
 import SwiftyJSON
 
-
+//CPRootViewModel管理vc所有的数据及对数据的二次加工
 class CPRootViewModel {
     
     var currencys: [CPCurrencyListModel] = []
-    var tiers: [CPLiveRatesTiersModel] = []
+    
+    var ratesModel: CPLiveRatesModel? = nil
+    
+
+    
     
     //更新数据
     func update(currencyModel: CPCurrencyModel?, ratesModel: CPLiveRatesModel?) {
@@ -25,17 +29,30 @@ class CPRootViewModel {
         } else { /* do nothing */ }
         
         
-        if let wrapRateModel = ratesModel {
-            self.tiers = wrapRateModel.tiers
-        } else { /* do nothing */ }
+        self.ratesModel = ratesModel
     }
     
     //直接在这里处理 头部的账户金额逻辑，这块需要有需求怎么处理数据才能做，
     //（处理后的金额， 比重）
     var displayAmountInfo: (String, String) {
-        // 其中 660.43数据是如果使用 CPCurrencyModel 和 CPLiveRatesModel 两个数据进行计算的，需要需求确认逻辑
-        //HKD 币种去哪里要，还是可以有切换币种的功能
-        return ("660.43", "HKD")
+ 
+        //USD 币种去哪里要，还是说ui可以有切换币种的功能, 这里使用HKD来展示
+        
+        
+        let currency = "USD"
+
+        // 数据异常情况
+        guard let wrapModel = ratesModel, let rateModel = wrapModel.getRate(with: currency) else { return ("", "") }
+        
+        // 账户总金融的计算逻辑是什么不清楚，这里假定从接口中获取到一个值 1000  两个数据进行计算的，需要需求确认逻辑
+        let totalAmount: Double = 1000.0
+        
+        let rateDouble = Double(rateModel.rate) ?? 0.0
+        
+        let amount = rateDouble * totalAmount
+        let amountStr = "\(amount)"
+        
+        return (amountStr, currency)
     }
 }
 
