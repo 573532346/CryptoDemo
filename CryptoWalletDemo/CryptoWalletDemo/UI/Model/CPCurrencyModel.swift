@@ -65,3 +65,22 @@ class CPCurrencyListModel {
         }
     }
 }
+
+class CPCurrencyModel {
+    
+    let list: [CPCurrencyListModel]
+    let total: Int
+    let isOk: Bool
+    
+    init(json: [AnyHashable: Any]) {
+        
+        let nJson = JSON(json)
+    
+        total = nJson["total"].intValue
+        isOk = nJson["ok"].boolValue
+        
+        list = nJson["currencies"].arrayValue.compactMap {
+            CPCurrencyListModel(json: $0)
+        }
+    }
+}
