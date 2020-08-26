@@ -7,6 +7,7 @@ def commonPods
     pod 'Kingfisher', '~> 5.3.1'
     pod 'SnapKit'
     pod 'Alamofire', '~> 5.2'
+    pod 'SwiftyJSON', '~> 4.0'
 end
 
 target 'CryptoWalletDemo' do
