@@ -45,9 +45,10 @@ class CPCurrencyContainerView: UIView {
         }
     }
     
-    func refreshUI() {
+    func refreshUI(infos: (String, String)) {
         //todo refresh for network data
-        
+        amountLabel.text = infos.0
+        currencyLabel.text = infos.1
     }
     
     //MARK: - Property
@@ -65,7 +66,6 @@ class CPCurrencyContainerView: UIView {
     lazy var amountLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.text = "660.43"
         label.font = UIFont.boldSystemFont(ofSize: 22.0)
         label.textColor = .white
         return label
@@ -74,7 +74,6 @@ class CPCurrencyContainerView: UIView {
     lazy var currencyLabel: UILabel = {
         let label = UILabel()
         label.textAlignment = .left
-        label.text = "HKD"
         label.font = UIFont.boldSystemFont(ofSize: 22.0)
         label.textColor = .gray
         return label
@@ -143,6 +142,12 @@ class CPWalletSectionTitleView: UIView {
         }
     }
     
+    
+    public func refreshUI(data: Any?) {
+        guard let turple = data as? (String, String) else { return }
+        
+        amountView.refreshUI(infos: turple)
+    }
     
     //MARK: - Property
     

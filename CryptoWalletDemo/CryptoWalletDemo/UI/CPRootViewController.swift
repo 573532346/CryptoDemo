@@ -31,7 +31,14 @@ class CPRootViewModel {
             self.tiers = wrapRateModel.tiers
         } else { /* do nothing */ }
     }
-
+    
+    //直接在这里处理 头部的账户金额逻辑，这块需要有需求怎么处理数据才能做，
+    //（处理后的金额， 比重）
+    var displayAmountInfo: (String, String) {
+        // 其中 660.43数据是如果使用 CPCurrencyModel 和 CPLiveRatesModel 两个数据进行计算的，需要需求确认逻辑
+        //HKD 币种去哪里要，还是可以有切换币种的功能
+        return ("660.43", "HKD")
+    }
 }
 
 typealias CallbackClosure = ([AnyHashable: Any]) -> ()
@@ -47,16 +54,20 @@ class CPRootViewController: CPBaseListViewController {
     
     func setupSubView() {
         
-        view.addSubview(titleView)
+        view.backgroundColor = UIColor.white
+        tableView.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
+        
+        view.addSubview(titleSectionView)
         view.addSubview(tableView)
-                
-        titleView.snp.makeConstraints { (make) in
+        
+        
+        titleSectionView.snp.makeConstraints { (make) in
             make.left.right.top.equalToSuperview()
             make.height.equalTo(300.0)
         }
         
         tableView.snp.remakeConstraints { (make) in
-            make.top.equalTo(titleView.snp.bottom)
+            make.top.equalTo(titleSectionView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
         // 发起网络请求
@@ -88,23 +99,31 @@ class CPRootViewController: CPBaseListViewController {
         // 模仿网络请求： 网络层的逻辑需要对alamofire 进行封装并配合相应的数据编码、json解析、观察者框架的设计和搭建、网络工具类的封装工作量太大几乎等同于做一个全新的app框架，不可能在两天内做出来
 
         doRequestCurrencyInfo { [weak self] (dict) in
+            guard let strongSelf = self else { return }
             // 模拟网络观察者框架的回调
         
             let model = CPCurrencyModel(json: dict)
             self?.viewModel.update(currencyModel: model, ratesModel: nil)
             
             // 刷新UI
-            self?.refreshUI()
+            strongSelf.reloadUI()
         }
         
         doRequestRatesInfo { [weak self] (dict) in
+            guard let strongSelf = self else { return }
             // 模拟网络观察者框架的回调
             let model = CPLiveRatesModel(json: dict)
             self?.viewModel.update(currencyModel: nil, ratesModel: model)
             
-            // 刷新UI
-            self?.refreshUI()
+            
+            strongSelf.reloadUI()
         }
+    }
+    
+    func reloadUI() {
+        
+        titleSectionView.refreshUI(data: viewModel.displayAmountInfo)
+        refreshUI()
     }
     
     // currency相关的数据获取
@@ -127,8 +146,16 @@ class CPRootViewController: CPBaseListViewController {
     //MARK: - Property
     var viewModel = CPRootViewModel()
     
-    lazy var titleView: CPWalletSectionTitleView = {
+    lazy var titleSectionView: CPWalletSectionTitleView = {
         let view = CPWalletSectionTitleView()
         return view
     }()
+}
+
+extension CPRootViewController {
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        
+        return 0.001
+    }
 }

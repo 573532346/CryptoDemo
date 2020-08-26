@@ -49,15 +49,32 @@ class CPWalletListCell: CPBaseListViewCell {
     override func setupSubviews() {
         super.setupSubviews()
         
+    
+        contentView.backgroundColor = UIColor.blue.withAlphaComponent(0.2)
+        
+        // 这里的圆角需要优化，具体用coregraphic,demo不考虑处理
+        let container = UIView()
+        container.backgroundColor = .white
+        container.layer.cornerRadius = 4.0
+        container.layer.masksToBounds = true
+        
+        contentView.addSubview(container)
+        container.snp.makeConstraints { (make) in
+            make.top.left.right.equalToSuperview().inset(10.0)
+            make.bottom.equalToSuperview()
+            make.height.equalTo(44.0)
+        }
+        
         //以下的布局和颜色均需要ui提供，这里仅做粗略的布局
-        contentView.addSubview(icon)
-        contentView.addSubview(symbolLabel)
-        contentView.addSubview(numLabel)
-        contentView.addSubview(usdAmoutLabel)
+        container.addSubview(icon)
+        container.addSubview(symbolLabel)
+        container.addSubview(numLabel)
+        container.addSubview(usdAmoutLabel)
         
         icon.snp.makeConstraints { (make) in
-            make.left.equalToSuperview().offset(15.0)
+            make.left.equalToSuperview().offset(5.0)
             make.centerY.equalToSuperview()
+            make.width.height.equalTo(15.0)
         }
         
         symbolLabel.snp.makeConstraints { (make) in
@@ -66,12 +83,12 @@ class CPWalletListCell: CPBaseListViewCell {
         }
         
         numLabel.snp.makeConstraints { (make) in
-            make.right.equalToSuperview().offset(-15.0)
+            make.right.equalToSuperview().offset(-5.0)
             make.top.equalToSuperview().offset(5.0)
         }
         
         usdAmoutLabel.snp.makeConstraints { (make) in
-            make.right.equalToSuperview().offset(-15.0)
+            make.right.equalToSuperview().offset(-5.0)
             make.top.equalTo(numLabel.snp.bottom).offset(4.0)
         }
         
@@ -88,7 +105,10 @@ class CPWalletListCell: CPBaseListViewCell {
         usdAmoutLabel.text = wrapModel.displayUSD
         
         if let url = URL(string: wrapModel.iconUrl) {
-            icon.kf.setImage(with: url)
+            
+            let placeHolder = UIImage(named: "icon_common_no web")
+            
+            icon.kf.setImage(with: url, placeholder: placeHolder)
         } else {/* do nothing */}
     }
     
