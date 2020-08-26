@@ -14,22 +14,16 @@ import SwiftyJSON
 
 class CPRootViewModel {
     
-    let list: [CPCurrencyListModel]
-    let total: Int
-    let isOk: Bool
+    var currencys: [CPCurrencyListModel] = []
+    var tiers: [CPLiveRatesTiersModel] = []
     
-    init(json: [AnyHashable: Any]) {
+    func update(currencyModel: CPCurrencyModel, ratesModel: CPLiveRatesModel) {
         
-        let nJson = JSON(json)
-    
-        total = nJson["total"].intValue
-        isOk = nJson["ok"].boolValue
-        
-        list = nJson["currencies"].arrayValue.compactMap {
-            CPCurrencyListModel(json: $0)
-        }
+        self.currencys = currencyModel.list
+        self.tiers = ratesModel.tiers
     }
 }
+
 
 class CPRootViewController: CPBaseListViewController {
 
