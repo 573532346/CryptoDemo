@@ -9,8 +9,6 @@
 import UIKit
 import SwiftyJSON
 
-//这两个model在完整的框架中应该是需要放在网络封装的数据层中，鉴于时间有限，先放在ui层
-
 
 class CPRootViewModel {
     
