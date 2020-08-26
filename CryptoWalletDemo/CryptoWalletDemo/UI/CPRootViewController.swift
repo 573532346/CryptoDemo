@@ -8,6 +8,7 @@
 
 import UIKit
 import SwiftyJSON
+import MJRefresh
 
 //CPRootViewModel管理vc所有的数据及对数据的二次加工
 class CPRootViewModel {
@@ -15,9 +16,6 @@ class CPRootViewModel {
     var currencys: [CPCurrencyListModel] = []
     
     var ratesModel: CPLiveRatesModel? = nil
-    
-
-    
     
     //更新数据
     func update(currencyModel: CPCurrencyModel?, ratesModel: CPLiveRatesModel?) {
@@ -85,8 +83,17 @@ class CPRootViewController: CPBaseListViewController {
             make.top.equalTo(titleSectionView.snp.bottom)
             make.left.right.bottom.equalToSuperview()
         }
+        
         // 发起网络请求
         doNetworkRequest()
+        
+        // 下拉刷新
+        tableView.mj_header = MJRefreshNormalHeader(refreshingBlock: { [weak self] in
+            
+            guard let strongSelf = self else { return }
+            
+            strongSelf.doNetworkRequest()
+        })
     }
     
     override func registerCells() -> [(Any, String)] {
@@ -122,6 +129,7 @@ class CPRootViewController: CPBaseListViewController {
             
             // 刷新UI
             strongSelf.reloadUI()
+            strongSelf.tableView.mj_header?.endRefreshing()
         }
         
         doRequestRatesInfo { [weak self] (dict) in
@@ -130,8 +138,8 @@ class CPRootViewController: CPBaseListViewController {
             let model = CPLiveRatesModel(json: dict)
             self?.viewModel.update(currencyModel: nil, ratesModel: model)
             
-            
             strongSelf.reloadUI()
+            strongSelf.tableView.mj_header?.endRefreshing()
         }
     }
     
