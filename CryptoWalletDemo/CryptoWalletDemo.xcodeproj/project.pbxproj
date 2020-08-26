@@ -20,6 +20,7 @@
 		0153F06824F659AD007C7B7E /* CPLiveRatesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0153F06724F659AD007C7B7E /* CPLiveRatesModel.swift */; };
 		0153F06A24F66480007C7B7E /* CPWalletSectionTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0153F06924F66480007C7B7E /* CPWalletSectionTitleView.swift */; };
 		0153F06C24F668C6007C7B7E /* CPIConView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0153F06B24F668C6007C7B7E /* CPIConView.swift */; };
+		0153F06E24F66FE2007C7B7E /* currencyData.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0153F06D24F66FE2007C7B7E /* currencyData.plist */; };
 		019A8BCA24F6372700BBBCA2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A8BC924F6372700BBBCA2 /* AppDelegate.swift */; };
 		019A8BCE24F6372700BBBCA2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 019A8BCD24F6372700BBBCA2 /* ContentView.swift */; };
 		019A8BD024F6372A00BBBCA2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 019A8BCF24F6372A00BBBCA2 /* Assets.xcassets */; };
@@ -40,6 +41,7 @@
 		0153F06724F659AD007C7B7E /* CPLiveRatesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPLiveRatesModel.swift; sourceTree = "<group>"; };
 		0153F06924F66480007C7B7E /* CPWalletSectionTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPWalletSectionTitleView.swift; sourceTree = "<group>"; };
 		0153F06B24F668C6007C7B7E /* CPIConView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CPIConView.swift; sourceTree = "<group>"; };
+		0153F06D24F66FE2007C7B7E /* currencyData.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = currencyData.plist; sourceTree = "<group>"; };
 		019A8BC624F6372700BBBCA2 /* CryptoWalletDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CryptoWalletDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		019A8BC924F6372700BBBCA2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		019A8BCD24F6372700BBBCA2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -148,6 +150,7 @@
 				019A8BCF24F6372A00BBBCA2 /* Assets.xcassets */,
 				019A8BD424F6372A00BBBCA2 /* LaunchScreen.storyboard */,
 				019A8BD724F6372A00BBBCA2 /* Info.plist */,
+				0153F06D24F66FE2007C7B7E /* currencyData.plist */,
 				019A8BD124F6372A00BBBCA2 /* Preview Content */,
 			);
 			path = CryptoWalletDemo;
@@ -249,6 +252,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				019A8BD624F6372A00BBBCA2 /* LaunchScreen.storyboard in Resources */,
+				0153F06E24F66FE2007C7B7E /* currencyData.plist in Resources */,
 				019A8BD324F6372A00BBBCA2 /* Preview Assets.xcassets in Resources */,
 				019A8BD024F6372A00BBBCA2 /* Assets.xcassets in Resources */,
 			);

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>total</key>
+	<integer>3</integer>
+	<key>currencies</key>
+	<array>
+		<dict>
+			<key>token_decimal</key>
+			<integer>8</integer>
+			<key>colorful_image_url</key>
+			<string>https://s3-ap-southeast-1.amazonaws.com/monaco-cointrack-production/uploads/coin/colorful_logo/5c1246f55568a400e48ac233/bitcoin.png</string>
+			<key>gray_image_url</key>
+			<string>https://s3-ap-southeast-1.amazonaws.com/monaco-cointrack-production/uploads/coin/gray_logo/5c1246f55568a400e48ac233/bitcoin1.png</string>
+			<key>token_decimal_value</key>
+			<string>10000000</string>
+			<key>coin_id</key>
+			<string>BTC</string>
+			<key>name</key>
+			<string>Bitcoin</string>
+			<key>symbol</key>
+			<string>BTC</string>
+		</dict>
+        <dict>
+            <key>token_decimal</key>
+            <integer>18</integer>
+            <key>colorful_image_url</key>
+            <string>https://s3-ap-southeast-1.amazonaws.com/monaco-cointrack-production/uploads/coin/colorful_logo/5c12487d5568a4017c20a993/ethereum.png</string>
+            <key>gray_image_url</key>
+            <string>https://s3-ap-southeast-1.amazonaws.com/monaco-cointrack-production/uploads/coin/gray_logo/5c12487d5568a4017c20a993/ethereum.png</string>
+            <key>token_decimal_value</key>
+            <string>10000000</string>
+            <key>coin_id</key>
+            <string>ETH</string>
+            <key>name</key>
+            <string>Ethereum</string>
+            <key>symbol</key>
+            <string>ETH</string>
+        </dict>
+        <dict>
+            <key>token_decimal</key>
+            <integer>18</integer>
+            <key>colorful_image_url</key>
+            <string>https://s3-ap-southeast-1.amazonaws.com/monaco-cointrack-production/uploads/coin/colorful_logo/5c1248c15568a4017c20aa87/cro.png</string>
+            <key>gray_image_url</key>
+            <string>ttps://s3-ap-southeast-1.amazonaws.com/monaco-cointrack-production/uploads/coin/gray_logo/5c1248c15568a4017c20aa87/cro.png</string>
+            <key>token_decimal_value</key>
+            <string>10000000</string>
+            <key>coin_id</key>
+            <string>CRO</string>
+            <key>name</key>
+            <string>Crypto.com Coin</string>
+            <key>symbol</key>
+            <string>CRO</string>
+        </dict>
+	</array>
+	<key>ok</key>
+	<true/>
+</dict>
+</plist>
