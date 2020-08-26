@@ -32,6 +32,28 @@ class CPRootViewController: CPBaseListViewController {
 
         navigationController?.setNavigationBarHidden(true, animated: false)
         
-        self.view.backgroundColor = .red
+        setupSubView()
     }
+    
+    func setupSubView() {
+        
+        view.addSubview(titleView)
+        view.addSubview(tableView)
+        
+        titleView.snp.makeConstraints { (make) in
+            make.left.right.top.equalToSuperview()
+            make.height.equalTo(300.0)
+        }
+        
+        tableView.snp.remakeConstraints { (make) in
+            make.top.equalTo(titleView.snp.bottom)
+            make.left.right.bottom.equalToSuperview()
+        }
+    }
+    
+    //MARK: - Property
+    lazy var titleView: CPWalletSectionTitleView = {
+        let view = CPWalletSectionTitleView()
+        return view
+    }()
 }
