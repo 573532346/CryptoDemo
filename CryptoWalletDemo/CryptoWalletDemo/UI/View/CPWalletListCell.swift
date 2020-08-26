@@ -104,8 +104,11 @@ class CPWalletListCell: CPBaseListViewCell {
         numLabel.text = wrapModel.displayAmount
         usdAmoutLabel.text = wrapModel.displayUSD
         
+        
+        //https://s3-ap-southeast-1.amazonaws.com/monaco-cointrack-production/uploads/coin/colorful_logo/5c1246f55568a400e48ac233/bitcoin.png 不翻墙无法加载成功
         if let url = URL(string: wrapModel.iconUrl) {
             
+            // 随便弄一个占位图
             let placeHolder = UIImage(named: "icon_common_no web")
             
             icon.kf.setImage(with: url, placeholder: placeHolder)
