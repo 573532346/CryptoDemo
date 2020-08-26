@@ -21,7 +21,7 @@ class UILayer: NSObject {
     
         let window = UIWindow(frame: UIScreen.main.bounds)
         
-        let rootVC = UITestViewController()
+        let rootVC = CPRootViewController()
         let navi = UINavigationController(rootViewController: rootVC)
         window.rootViewController = navi
         window.makeKeyAndVisible()

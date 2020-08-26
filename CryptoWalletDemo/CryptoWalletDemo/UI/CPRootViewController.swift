@@ -1,5 +1,5 @@
 //
-//  UITestViewController.swift
+//  CPRootViewController.swift
 //  CryptoWalletDemo
 //
 //  Created by Dennis.zhang on 2020/8/26.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class UITestViewController: UIViewController {
+class CPRootViewController: CPBaseListViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -17,4 +17,5 @@ class UITestViewController: UIViewController {
         
         self.view.backgroundColor = .red
     }
+    
 }
