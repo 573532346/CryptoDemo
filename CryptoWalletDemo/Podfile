@@ -5,6 +5,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 
 def commonPods
     pod 'Kingfisher', '~> 5.3.1'
+    pod 'SnapKit'
 end
 
 target 'CryptoWalletDemo' do
@@ -15,4 +16,7 @@ target 'CryptoWalletDemo' do
     commonPods
 
 end
+
+
+
 
