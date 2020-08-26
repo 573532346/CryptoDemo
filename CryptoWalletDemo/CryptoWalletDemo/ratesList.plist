@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>ok</key>
+	<true/>
+	<key>warning</key>
+	<string></string>
+	<key>tiers</key>
+	<array>
+		<dict>
+			<key>from_currency</key>
+			<string>DAI</string>
+			<key>to_currency</key>
+			<string>USD</string>
+			<key>rates</key>
+			<array>
+				<dict>
+					<key>amount</key>
+					<string>100000.0000000000</string>
+					<key>rate</key>
+					<string>1.0546460400</string>
+				</dict>
+                <dict>
+                    <key>amount</key>
+                    <string>200.0000000000</string>
+                    <key>rate</key>
+                    <string>1.0290459995</string>
+                </dict>
+                <dict>
+                    <key>amount</key>
+                    <string>2000.0000000000</string>
+                    <key>rate</key>
+                    <string>1.0304697500</string>
+                </dict>
+			</array>
+		</dict>
+        <dict>
+            <key>from_currency</key>
+            <string>BTC</string>
+            <key>to_currency</key>
+            <string>USD</string>
+            <key>rates</key>
+            <array>
+                <dict>
+                    <key>amount</key>
+                    <string>0.4000000000</string>
+                    <key>rate</key>
+                    <string>9194.9300000000</string>
+                </dict>
+                <dict>
+                    <key>amount</key>
+                    <string>3.0000000000</string>
+                    <key>rate</key>
+                    <string>9194.9300000000</string>
+                </dict>
+                <dict>
+                    <key>amount</key>
+                    <string>5.0000000000</string>
+                    <key>rate</key>
+                    <string>9194.9300000000</string>
+                </dict>
+            </array>
+        </dict>
+	</array>
+</dict>
+</plist>
